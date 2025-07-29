@@ -64,12 +64,12 @@ body {
 }
 
 a {
-  color: var(--rp-iris);
+  color: var(--rp-text);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--rp-foam);
+  color: var(--rp-iris);
 }
 
 li {
@@ -88,4 +88,9 @@ button {
 
 button:hover {
   background: var(--rp-highlight-med);
+}
+
+main {
+  max-width: 48rem;
+  margin: 0 auto;
 }

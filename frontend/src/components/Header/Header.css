@@ -15,7 +15,7 @@ header {
 .header-title {
   a {
     font-family: monospace;
-    color: var(--rp-text);
+    color: var(--rp-iris);
     font-size: 1rem;
     font-weight: 700;
   }
@@ -44,9 +44,10 @@ nav {
 }
 
 .theme-toggle {
-    &:hover {
-        color: var(--rp-gold);
-    }
+  color: var(--rp-gold);
+  &:hover {
+    color: var(--rp-iris);
+  }
 }
 
 @media (max-width: 768px) {
