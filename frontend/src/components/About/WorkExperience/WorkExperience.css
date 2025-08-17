@@ -1,0 +1,11 @@
+.work-experience-list {
+  list-style: circle;
+  padding-left: 1rem;
+  li {
+    list-style-type: disc;
+  }
+}
+
+.work-experience-list li:not(:last-child) {
+  margin-bottom: 0.5rem;
+}

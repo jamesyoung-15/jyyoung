@@ -1,6 +1,6 @@
 import Header from "./components/Header/Header";
 import Overview from "./components/Overview/Overview";
-// import About from "./components/About/About";
+import About from "./components/About/About";
 
 const App = () => {
   return (
@@ -8,7 +8,7 @@ const App = () => {
       <Header />
       <main>
         <Overview />
-        {/* <About /> */}
+        <About />
       </main>
     </>
   );
