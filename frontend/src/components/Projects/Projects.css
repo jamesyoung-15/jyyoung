@@ -1,0 +1,108 @@
+/* Container */
+.projects-section {
+  padding: 2rem 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Category tabs */
+.projects-categories {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+.projects-category {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition:
+    background-color 160ms ease,
+    transform 120ms ease;
+}
+.projects-category:hover {
+  transform: translateY(-2px);
+}
+.projects-category.active {
+  background: var(--rp-highlight-high);
+  border-color: transparent;
+}
+
+/* Accordion content: image + body layout */
+.project-accordion-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem 2rem;
+}
+
+/* Image */
+.project-image-wrap {
+  margin: auto;
+  width: 100%;
+  max-height: 30rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+.project-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Body */
+.project-body {
+  flex: 1;
+  min-width: 0;
+}
+.project-description {
+  margin: 1rem 0;
+  line-height: 1.4;
+}
+
+/* Tags */
+.project-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+.project-tag {
+  background: color-mix(in srgb, var(--rp-foam) 15%, transparent);
+  color: var(--rp-foam);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid rgba(2, 6, 23, 0.04);
+}
+
+/* Links (icons) */
+.project-links {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--rp-iris) 10%, transparent);
+  color: var(--rp-iris);
+  transition:
+    background-color 120ms ease,
+    transform 120ms ease;
+  text-decoration: none;
+}
+.project-link:hover {
+  transform: translateY(-1px);
+}
