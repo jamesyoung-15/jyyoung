@@ -13,16 +13,20 @@ const items = [
       <div>
         <ul className="work-experience-list">
           <li>
-            Developed and maintained web applications using React and Node.js,
-            improving user experience and performance.
+            Worked on building an automated pipeline to flash Linux edge
+            devices, orchestrate health checks, and run verification scripts to
+            streamline device QA.
           </li>
           <li>
-            Collaborated with cross-functional teams to design and implement new
-            features based on user feedback.
+            Exposed test results and device status via a FastAPI service for
+            future integration with CI/CD to reduce developer time spent on
+            device validation
           </li>
           <li>
-            Participated in code reviews and contributed to the team's coding
-            standards.
+            Helped develop the frontend (React, Tailwind) and backend (FastAPI)
+            for an internal RAG-based LLM chat interface and implemented an
+            in-app feedback system to capture metrics to guide iterative
+            improvements
           </li>
         </ul>
       </div>
@@ -38,8 +42,8 @@ const items = [
       <div>
         <ul className="work-experience-list">
           <li>
-            Created a prototype for real-time fall detection using only a camera
-            on a Raspberry Pi.
+            Created a prototype for real-time fall detection using camera inputs
+            connected to a Raspberry Pi.
           </li>
           <li>
             Built with Python by utilizing OpenCV for streaming camera input

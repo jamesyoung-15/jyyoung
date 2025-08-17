@@ -38,6 +38,7 @@ const items: AccordionItem[] = [
   },
   {
     id: "skills",
+    defaultOpen: true,
     titleIcon: faCode,
     title: "Skills",
     children: <Skills />,

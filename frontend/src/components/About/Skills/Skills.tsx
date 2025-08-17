@@ -16,7 +16,7 @@ import {
 } from "../../../assets/icons/skills";
 
 const SkillsData = {
-  Technologies: [
+  Languages: [
     { name: "Typescript", icon: typescriptLogo },
     { name: "Python", icon: pythonLogo },
     { name: "CSS", icon: cssLogo },

@@ -6,7 +6,7 @@ import {
   faBriefcase,
   faCompass,
   faEnvelope,
-  faPaperclip,
+  // faPaperclip,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -46,12 +46,12 @@ const contactLinks = [
     link: "https://blog.jyylab.com",
     handle: "blog.jyylab.com",
   },
-  {
-    text: "Resume",
-    icon: faPaperclip,
-    link: "https://blog.jyylab.com",
-    handle: "PDF Resume",
-  },
+  // {
+  //   text: "Resume",
+  //   icon: faPaperclip,
+  //   link: "https://blog.jyylab.com",
+  //   handle: "PDF Resume",
+  // },
 ];
 
 const Overview = () => {
@@ -79,7 +79,7 @@ const Overview = () => {
           <img src={myPhoto} alt="Hello!" />
         </div>
       </div>
-      <div className="overview-links">
+      {/* <div className="overview-links">
         {contactLinks.map((contactLink, index) => (
           <div key={index} className="overview-link">
             <a href={contactLink.link} target="_blank">
@@ -91,6 +91,25 @@ const Overview = () => {
             </a>
           </div>
         ))}
+      </div> */}
+      <div className="overview-links-container">
+        <div className="overview-links-v2">
+          {contactLinks.map((contactLink, index) => (
+            <a
+              href={contactLink.link}
+              key={index}
+              target="_blank"
+              className="overview-link-v2"
+              rel="noreferrer"
+            >
+              <FontAwesomeIcon
+                icon={contactLink.icon}
+                className="link-icon-v2"
+              />
+              <span>{contactLink.text}</span>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -14,8 +14,7 @@
 }
 
 .skills-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  display: flex;
   flex-wrap: wrap;
   gap: 1rem;
 }
@@ -23,23 +22,24 @@
 .skills-list-item {
   background-color: var(--rp-surface);
   border-radius: 8px;
-  padding: 0.75rem;
+  padding: 0.5rem;
   text-align: center;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 0.5rem;
   &:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: var(--rp-highlight-low);
+    scale: 1.01;
   }
 }
 
 .skills-list-item-icon {
-  width: 2rem;
-  height: 2rem;
+  width: 0.8rem;
+  height: 0.8rem;
 }
 
 .skills-list-item-name {
-  font-size: small;
+  font-size: 0.8rem;
 }
