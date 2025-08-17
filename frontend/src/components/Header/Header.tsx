@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faInfoCircle,
   faPaperclip,
-  faContactBook,
+  // faContactBook,
   faMoon,
   faSun,
   faCircle,
@@ -30,15 +30,15 @@ const Header = () => {
               </a>
             </li>
             <li>
-              <a href="#resume">
+              <a href="https://resume.jyyhomelab.com/" target="_blank" rel="noopener noreferrer">
                 Resume <FontAwesomeIcon icon={faPaperclip} />
               </a>
             </li>
-            <li>
+            {/* <li>
               <a href="#contact">
                 Contact <FontAwesomeIcon icon={faContactBook} />
               </a>
-            </li>
+            </li> */}
           </ul>
           <button onClick={toggleTheme} className="theme-toggle">
             {theme === "dark" ? (
