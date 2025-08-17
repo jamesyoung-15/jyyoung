@@ -1,0 +1,8 @@
+.certifications ul {
+  margin-left: 1rem;
+}
+
+.certifications li {
+  list-style-type: disc;
+  margin-bottom: 0.5rem;
+}

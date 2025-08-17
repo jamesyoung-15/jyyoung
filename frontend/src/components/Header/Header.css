@@ -15,13 +15,20 @@ header {
 .header-title {
   a {
     font-family: monospace;
-    color: var(--rp-text);
+    color: var(--rp-iris);
     font-size: 1rem;
     font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 4px;
   }
   a:hover {
     color: var(--rp-pine);
   }
+}
+
+.status-icon {
+  font-size: 0.5rem;
 }
 
 nav {
@@ -44,9 +51,10 @@ nav {
 }
 
 .theme-toggle {
-    &:hover {
-        color: var(--rp-gold);
-    }
+  color: var(--rp-gold);
+  &:hover {
+    color: var(--rp-iris);
+  }
 }
 
 @media (max-width: 768px) {

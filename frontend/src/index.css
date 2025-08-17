@@ -34,6 +34,7 @@
   --rp-highlight-low: #21202e;
   --rp-highlight-med: #403d52;
   --rp-highlight-high: #524f67;
+  --blue: #89b4fa;
 }
 
 .light-theme {
@@ -42,16 +43,17 @@
   --rp-overlay: #f2e9e1;
   --rp-muted: #9893a5;
   --rp-subtle: #797593;
-  --rp-text: #575279;
+  --rp-text: #282731;
   --rp-love: #b4637a;
   --rp-gold: #ea9d34;
   --rp-rose: #d7827e;
   --rp-pine: #286983;
   --rp-foam: #56949f;
-  --rp-iris: #907aa9;
+  --rp-iris: #7287fd;
   --rp-highlight-low: #f4ede8;
   --rp-highlight-med: #dfdad9;
   --rp-highlight-high: #cecacd;
+  --blue: #1e66f5;
 }
 
 body {
@@ -64,12 +66,17 @@ body {
 }
 
 a {
-  color: var(--rp-iris);
+  color: var(--rp-text);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--rp-foam);
+  color: var(--rp-iris);
+}
+
+ul {
+  padding: 0;
+  margin: 0;
 }
 
 li {
@@ -88,4 +95,9 @@ button {
 
 button:hover {
   background: var(--rp-highlight-med);
+}
+
+main {
+  max-width: 48rem;
+  margin: 0 auto;
 }
