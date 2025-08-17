@@ -6,6 +6,7 @@ import {
   faContactBook,
   faMoon,
   faSun,
+  faCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import useTheme from "../../hooks/useTheme";
 
@@ -16,7 +17,10 @@ const Header = () => {
     <header>
       <div className="header-container">
         <div className="header-title">
-          <a href="#">James Young</a>
+          <a href="#">
+            <span>James Young</span>
+            <FontAwesomeIcon icon={faCircle} className="status-icon" />
+          </a>
         </div>
         <nav>
           <ul>
