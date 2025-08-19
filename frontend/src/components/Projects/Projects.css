@@ -1,6 +1,5 @@
 /* Container */
 .projects-section {
-  padding: 2rem 1rem;
   max-width: 1100px;
   margin: 0 auto;
 }
@@ -105,4 +104,11 @@
 }
 .project-link:hover {
   transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+  .projects-categories {
+    align-items: center;
+    justify-content: center;
+  }
 }

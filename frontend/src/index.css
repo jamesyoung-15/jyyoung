@@ -105,3 +105,16 @@ main {
   max-width: 48rem;
   margin: 0 auto;
 }
+
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  } 
+}
+
+@media (max-width: 480px) {
+  .container h2 {
+    text-align: center;
+  }
+}

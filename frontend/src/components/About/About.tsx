@@ -53,9 +53,9 @@ const items: AccordionItem[] = [
 
 const About = () => {
   return (
-    <section className="about-section" id="about">
+    <section className="about-section container" id="about">
       <h2>About Me</h2>
-      <div className="about-container">
+      <div>
         <Accordion items={items} />
       </div>
     </section>
