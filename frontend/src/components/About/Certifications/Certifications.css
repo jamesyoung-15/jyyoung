@@ -1,5 +1,31 @@
-.certifications a {
+.certifications {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 0.5rem;
+}
+
+.certification-item {
+  background-color: var(--rp-surface);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 0.5rem;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+  font-size: smaller;
+
+  img {
+    max-width: 120px;
+    height: auto;
+  }
+
+  &:hover {
+    background-color: var(--rp-highlight-low);
+    transform: scale(1.01);
+  }
 }
