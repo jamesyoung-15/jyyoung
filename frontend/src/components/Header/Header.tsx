@@ -30,7 +30,11 @@ const Header = () => {
               </a>
             </li>
             <li>
-              <a href="https://resume.jyyhomelab.com/" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://raw.githubusercontent.com/jamesyoung-15/resume/refs/heads/main/resume-main/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Resume <FontAwesomeIcon icon={faPaperclip} />
               </a>
             </li>

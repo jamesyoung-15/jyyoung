@@ -2,9 +2,10 @@
 
 Frontend uses React w/ Typescript and Vite.
 
-## Sync To S3
+## Dev
 
-``` bash
+```bash
+npm install
+npm run dev
 npm run build
-aws s3 sync ./dist s3://jyyoung.com --delete --profile Prod
 ```

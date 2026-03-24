@@ -1,42 +1,36 @@
 import "./Skills.css";
 import {
   awsLogo,
-  cssLogo,
+  ansibleLogo,
   dockerLogo,
   fastapiLogo,
-  flaskLogo,
+  bashLogo,
   gitLogo,
-  typescriptLogo,
   terraformLogo,
   postgresqlLogo,
   pythonLogo,
-  reactLogo,
   sqliteLogo,
   linuxLogo,
 } from "../../../assets/icons/skills";
 
 const SkillsData = {
   Languages: [
-    { name: "Typescript", icon: typescriptLogo },
     { name: "Python", icon: pythonLogo },
-    { name: "CSS", icon: cssLogo },
-  ],
-  "Frameworks/Libraries": [
-    { name: "React", icon: reactLogo },
-    { name: "FastAPI", icon: fastapiLogo },
-    { name: "Flask", icon: flaskLogo },
-  ],
-  Databases: [
-    { name: "PostgreSQL", icon: postgresqlLogo },
-    { name: "SQLite", icon: sqliteLogo },
+    { name: "Bash", icon: bashLogo },
   ],
   Tools: [
     { name: "Git", icon: gitLogo },
     { name: "Docker", icon: dockerLogo },
     { name: "Terraform", icon: terraformLogo },
+    { name: "Ansible", icon: ansibleLogo },
     { name: "Linux", icon: linuxLogo },
   ],
-  Cloud: [{ name: "AWS", icon: awsLogo }],
+  Platforms: [{ name: "AWS", icon: awsLogo }],
+  "Frameworks/Libraries": [{ name: "FastAPI", icon: fastapiLogo }],
+  Databases: [
+    { name: "PostgreSQL", icon: postgresqlLogo },
+    { name: "SQLite", icon: sqliteLogo },
+  ],
 };
 
 const Skills = () => {

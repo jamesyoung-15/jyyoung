@@ -1,32 +1,21 @@
 import "./WorkExperience.css";
 import Timeline from "../../Timeline/Timeline";
 
-// example (not a file change) — pass this into the Timeline component
 const items = [
   {
     id: "exp-1",
-    title: "Software Engineer Intern",
-    date: "June 2025 - Present",
-    metaTitle: "Granite Telecommunications",
+    title: "Platform Engineer",
+    date: "Janurary 2026 - Present",
+    metaTitle: "American Family Insurance",
     location: "United States",
     description: (
       <div>
         <ul className="work-experience-list">
           <li>
-            Worked on building an automated pipeline to flash Linux edge
-            devices, orchestrate health checks, and run verification scripts to
-            streamline device QA.
-          </li>
-          <li>
-            Exposed test results and device status via a FastAPI service for
-            future integration with CI/CD to reduce developer time spent on
-            device validation
-          </li>
-          <li>
-            Helped develop the frontend (React, Tailwind) and backend (FastAPI)
-            for an internal RAG-based LLM chat interface and implemented an
-            in-app feedback system to capture metrics to guide iterative
-            improvements
+            Contributed to centralized server automation by developing and
+            maintaining Ansible playbooks and roles to provision and manage
+            Windows and RHEL systems, improving configuration standardization
+            across environments.
           </li>
         </ul>
       </div>
@@ -34,6 +23,33 @@ const items = [
   },
   {
     id: "exp-2",
+    title: "Software Engineer Intern",
+    date: "June 2025 - December 2025",
+    metaTitle: "Granite Telecommunications",
+    location: "United States",
+    description: (
+      <div>
+        <ul className="work-experience-list">
+          <li>
+            Built testing infrastructure that automates flashing images to Linux
+            edge devices, orchestrate health checks, and run verification
+            scripts to streamline device QA
+          </li>
+          <li>
+            Added FastAPI endpoints for developers to access devices, run tests,
+            and retrieve results remotely
+          </li>
+          <li>
+            Worked on building an automated invoice processing pipeline using
+            OCR and Gemini to extract, classify, and structure data from
+            unstructured invoices from multiple vendors
+          </li>
+        </ul>
+      </div>
+    ),
+  },
+  {
+    id: "exp-3",
     title: "Software Developer Intern",
     date: "Dec. 2023 - Feb. 2024",
     metaTitle: "Intelligent Design Technology Limited",

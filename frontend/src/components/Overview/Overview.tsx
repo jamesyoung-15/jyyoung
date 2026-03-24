@@ -62,8 +62,8 @@ const Overview = () => {
           <h2>Hello! I'm James Young</h2>
           <div className="overview-details">
             <p>
-              <FontAwesomeIcon icon={faBriefcase} /> SWE Intern @ Granite
-              Telecommunications
+              <FontAwesomeIcon icon={faBriefcase} /> Platform Engineer @
+              American Family Insurance
             </p>
             <p>
               <FontAwesomeIcon icon={faGraduationCap} /> Studying MS Computer
