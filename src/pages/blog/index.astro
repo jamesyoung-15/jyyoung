@@ -18,29 +18,7 @@ const blogs = (await getCollection("posts"))
   description="Articles and insights about software engineering, infrastructure, and more."
 >
   <div class="blog-page">
-    <header class="blog-header">
-      <h1>Blogs</h1>
-    </header>
-
+    <h1>Blogs</h1>
     <PostSearch posts={blogs} postsPerPage={6} />
   </div>
 </BaseLayout>
-
-<style>
-  .blog-header {
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-
-  .blog-header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin: 0;
-  }
-
-  .blog-header p {
-    font-size: 1rem;
-    color: var(--rp-subtle);
-    margin: 0;
-  }
-</style>
