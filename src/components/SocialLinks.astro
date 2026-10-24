@@ -1,0 +1,80 @@
+---
+import FaGithub from "../assets/icons/github-brands-solid-full.svg";
+import FaLinkedin from "../assets/icons/linkedin-brands-solid-full.svg";
+import FaEnvelope from "../assets/icons/envelope-solid-full.svg";
+import FaYoutube from "../assets/icons/youtube-brands-solid-full.svg";
+
+const RESUME =
+  "https://raw.githubusercontent.com/jamesyoung-15/resume/refs/heads/main/resume-main/resume.pdf";
+
+const socials = [
+  { label: "GitHub", href: "https://github.com/jamesyoung-15", Icon: FaGithub },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/jamesyyoung/",
+    Icon: FaLinkedin,
+  },
+  { label: "Email", href: "mailto:jyyoung@jyymail.com", Icon: FaEnvelope },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/@jyylab",
+    Icon: FaYoutube,
+  },
+];
+---
+
+<ul class="icon-row">
+  <li>
+    <a
+      href={RESUME}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="resume-link"
+    >
+      Resume
+    </a>
+  </li>
+  {socials.map((s) => (
+    <li>
+      <a
+        href={s.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={s.label}
+      >
+        <s.Icon width={18} height={18} aria-hidden="true" />
+      </a>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .icon-row {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-top: 1rem;
+  }
+
+  .icon-row a {
+    display: flex;
+    color: var(--rp-subtle);
+  }
+
+  .icon-row a :global(svg) {
+    fill: var(--rp-subtle);
+    transition: fill 0.15s;
+  }
+
+  .icon-row a:hover :global(svg) {
+    fill: var(--rp-iris);
+  }
+
+  .icon-row a:hover {
+    color: var(--rp-iris);
+  }
+
+  .resume-link {
+    font-size: 0.875rem;
+  }
+</style>
