@@ -1,0 +1,49 @@
+---
+interface Props {
+  publishDate: string;
+  updatedDate?: string;
+}
+
+const { publishDate, updatedDate } = Astro.props;
+
+const formatDate = (dateStr: string) =>
+  new Date(dateStr).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+const isoDate = (dateStr: string) => new Date(dateStr).toISOString();
+---
+
+<div class="post-metadata">
+  <time class="publish-date" datetime={isoDate(publishDate)}>
+    Published {formatDate(publishDate)}
+  </time>
+  {updatedDate && (
+    <time class="updated-date" datetime={isoDate(updatedDate)}>
+      Updated {formatDate(updatedDate)}
+    </time>
+  )}
+</div>
+
+<style>
+  .post-metadata {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--rp-subtle);
+  }
+
+  .publish-date,
+  .updated-date {
+    display: flex;
+    align-items: center;
+  }
+
+  .updated-date {
+    padding-left: 1rem;
+    border-left: 1px solid var(--rp-highlight-med);
+  }
+</style>
