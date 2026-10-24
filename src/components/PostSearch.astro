@@ -1,0 +1,418 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  posts: CollectionEntry<"posts">[];
+  postsPerPage?: number;
+}
+
+const { posts, postsPerPage = 4 } = Astro.props;
+
+// Tag counts for the filter dropdown
+const tagCounts = posts.reduce(
+  (acc, post) => {
+    post.data.tags.forEach((tag) => {
+      acc[tag] = (acc[tag] || 0) + 1;
+    });
+    return acc;
+  },
+  {} as Record<string, number>,
+);
+
+const uniqueTags = Object.keys(tagCounts).sort();
+
+const formatDate = (dateStr: string) =>
+  new Date(dateStr).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+---
+
+<div class="search-container" data-per-page={postsPerPage}>
+  <div class="search-controls">
+    <input
+      id="search-input"
+      type="search"
+      class="search-input"
+      placeholder="Search posts..."
+      autocomplete="off"
+    />
+    <select id="tag-filter" class="tag-filter" aria-label="Filter by tag">
+      <option value="">All tags</option>
+      {uniqueTags.map((tag) => (
+        <option value={tag}>
+          {tag} ({tagCounts[tag]})
+        </option>
+      ))}
+    </select>
+  </div>
+
+  {/* Rendered at build time, so JS only hides/shows these */}
+  <ul id="posts" class="posts-grid">
+    {posts.map((post) => {
+      const haystack =
+        `${post.data.title} ${post.data.description} ${post.data.tags.join(" ")}`.toLowerCase();
+      return (
+        <li
+          class="post-card"
+          data-search={haystack}
+          data-tags={post.data.tags.join(" ")}
+        >
+          <div class="post-body">
+            <h3 class="post-title">
+              <a href={`/blog/${post.id}`}>{post.data.title}</a>
+            </h3>
+            <p class="post-description">{post.data.description}</p>
+            <div class="post-footer">
+              <time
+                class="post-date"
+                datetime={new Date(post.data.publishDate).toISOString()}
+              >
+                {formatDate(post.data.publishDate)}
+              </time>
+              <ul class="post-tags">
+                {post.data.tags.map((tag) => (
+                  <li>
+                    <button class="tag-pill" type="button" data-tag={tag}>
+                      {tag}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </li>
+      );
+    })}
+  </ul>
+
+  <p id="no-results" class="no-results" hidden>
+    No posts match that search.
+  </p>
+
+  <div id="pagination-container" class="pagination"></div>
+</div>
+
+<script>
+  const container = document.querySelector<HTMLElement>(".search-container");
+
+  if (container) {
+    const perPage = Number(container.dataset.perPage) || 4;
+
+    const searchInput =
+      container.querySelector<HTMLInputElement>("#search-input")!;
+    const tagFilter =
+      container.querySelector<HTMLSelectElement>("#tag-filter")!;
+    const list = container.querySelector<HTMLElement>("#posts")!;
+    const noResults = container.querySelector<HTMLElement>("#no-results")!;
+    const pager = container.querySelector<HTMLElement>(
+      "#pagination-container",
+    )!;
+
+    const items = Array.from(
+      list.querySelectorAll<HTMLLIElement>(".post-card"),
+    );
+
+    let query = "";
+    let tag = "";
+    let page = 1;
+
+    function matching() {
+      return items.filter((el) => {
+        const haystack = el.dataset.search ?? "";
+        const tags = (el.dataset.tags ?? "").split(" ");
+        // split/includes, not a substring test — else "go" matches "golang"
+        return haystack.includes(query) && (tag === "" || tags.includes(tag));
+      });
+    }
+
+    function apply() {
+      const matched = matching();
+      const totalPages = Math.ceil(matched.length / perPage);
+      page = Math.min(page, Math.max(totalPages, 1));
+      const start = (page - 1) * perPage;
+
+      items.forEach((el) => (el.hidden = true));
+      matched
+        .slice(start, start + perPage)
+        .forEach((el) => (el.hidden = false));
+
+      noResults.hidden = matched.length > 0;
+      renderPager(totalPages);
+    }
+
+    function renderPager(totalPages: number) {
+      if (totalPages <= 1) {
+        pager.innerHTML = "";
+        return;
+      }
+
+      const btn = (label: string, target: number, active = false) =>
+        `<button class="page-btn${active ? " active" : ""}" type="button" data-page="${target}">${label}</button>`;
+
+      const parts: string[] = [];
+      if (page > 1) parts.push(btn("← Prev", page - 1));
+
+      const maxVisible = 5;
+      const endPage = Math.min(
+        totalPages,
+        Math.max(1, page - Math.floor(maxVisible / 2)) + maxVisible - 1,
+      );
+      const startPage = Math.max(1, endPage - maxVisible + 1);
+
+      if (startPage > 1) parts.push(btn("1", 1));
+      if (startPage > 2) parts.push('<span class="ellipsis">...</span>');
+
+      for (let i = startPage; i <= endPage; i++) {
+        parts.push(btn(String(i), i, i === page));
+      }
+
+      if (endPage < totalPages - 1)
+        parts.push('<span class="ellipsis">...</span>');
+      if (endPage < totalPages) parts.push(btn(String(totalPages), totalPages));
+      if (page < totalPages) parts.push(btn("Next →", page + 1));
+
+      pager.innerHTML = parts.join("");
+    }
+
+    // Debounced search
+    let timer: ReturnType<typeof setTimeout>;
+    searchInput.addEventListener("input", () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        query = searchInput.value.trim().toLowerCase();
+        page = 1;
+        apply();
+      }, 300);
+    });
+
+    tagFilter.addEventListener("change", () => {
+      tag = tagFilter.value;
+      page = 1;
+      apply();
+    });
+
+    // Delegated: one listener covers every pill, no rebinding on re-render
+    list.addEventListener("click", (e) => {
+      const pill = (e.target as HTMLElement).closest<HTMLButtonElement>(
+        ".tag-pill",
+      );
+      if (!pill) return;
+      tag = pill.dataset.tag ?? "";
+      tagFilter.value = tag;
+      page = 1;
+      apply();
+    });
+
+    pager.addEventListener("click", (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLButtonElement>(
+        ".page-btn",
+      );
+      if (!btn) return;
+      page = Number(btn.dataset.page);
+      apply();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    apply();
+  }
+</script>
+
+<style>
+  .search-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .search-controls {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .search-input,
+  .tag-filter {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border: 1px solid var(--rp-highlight-med);
+    border-radius: 0.5rem;
+    background-color: var(--rp-overlay);
+    color: var(--rp-text);
+    font-family: inherit;
+  }
+
+  .search-input {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .search-input::placeholder {
+    color: var(--rp-muted);
+  }
+
+  .search-input:focus,
+  .tag-filter:focus {
+    outline: none;
+    border-color: var(--rp-highlight-high);
+    box-shadow: 0 0 0 2px var(--rp-highlight-low);
+  }
+
+  .tag-filter {
+    min-width: 150px;
+  }
+
+  .posts-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--rp-highlight-med);
+    border-radius: 0.75rem;
+    background-color: var(--rp-surface);
+    overflow: hidden;
+    transition: border-color 0.15s;
+  }
+
+  /* `display: flex` above would otherwise beat the [hidden] UA default */
+  .post-card[hidden] {
+    display: none;
+  }
+
+  .post-card:hover {
+    border-color: var(--rp-highlight-high);
+  }
+
+  .post-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    flex: 1;
+  }
+
+  .post-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .post-description {
+    font-size: 0.8rem;
+    color: var(--rp-subtle);
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+  }
+
+  .post-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+
+  .post-date {
+    font-size: 0.75rem;
+    color: var(--rp-muted);
+    flex-shrink: 0;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  .tag-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid var(--rp-highlight-med);
+    border-radius: 6px;
+    background-color: var(--rp-overlay);
+    color: var(--rp-subtle);
+    cursor: pointer;
+    transition:
+      background-color 0.15s,
+      border-color 0.15s,
+      color 0.15s;
+  }
+
+  .tag-pill:hover {
+    background-color: var(--rp-highlight-low);
+    border-color: var(--rp-highlight-high);
+    color: var(--rp-text);
+  }
+
+  .no-results {
+    margin: 0;
+    color: var(--rp-subtle);
+    font-size: 0.9rem;
+  }
+
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+  }
+
+  .pagination:empty {
+    display: none;
+  }
+
+  .page-btn,
+  .ellipsis {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+    border: 1px solid var(--rp-highlight-med);
+    border-radius: 0.4rem;
+    background-color: var(--rp-overlay);
+    color: var(--rp-subtle);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .page-btn {
+    font-weight: 500;
+  }
+
+  .page-btn:hover {
+    border-color: var(--rp-highlight-high);
+    background-color: var(--rp-highlight-low);
+    color: var(--rp-text);
+  }
+
+  .page-btn.active {
+    background-color: var(--rp-iris);
+    border-color: var(--rp-iris);
+    color: var(--rp-base);
+    font-weight: 600;
+  }
+
+  .ellipsis {
+    cursor: default;
+    padding: 0.4rem 0.3rem;
+  }
+
+  @media (max-width: 768px) {
+    .search-controls {
+      flex-direction: column;
+    }
+
+    .search-input,
+    .tag-filter {
+      width: 100%;
+    }
+  }
+</style>
