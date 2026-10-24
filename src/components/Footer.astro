@@ -1,0 +1,112 @@
+---
+import FaGithub from "../assets/icons/github-brands-solid-full.svg";
+import FaLinkedin from "../assets/icons/linkedin-brands-solid-full.svg";
+import FaYoutube from "../assets/icons/youtube-brands-solid-full.svg";
+import FaEnvelope from "../assets/icons/envelope-solid-full.svg";
+---
+
+<footer>
+  <div class="footer-inner">
+    <ul class="footer-socials">
+      <li>
+        <a
+          href="https://github.com/jamesyoung-15"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+        >
+          <FaGithub width={20} height={20} aria-hidden="true" />
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.linkedin.com/in/jamesyyoung/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+        >
+          <FaLinkedin width={20} height={20} aria-hidden="true" />
+        </a>
+      </li>
+      <li>
+        <a href="mailto:jyyoung@jyymail.com" aria-label="Email">
+          <FaEnvelope width={20} height={20} aria-hidden="true" />
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.youtube.com/@jyylab"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube"
+        >
+          <FaYoutube width={20} height={20} aria-hidden="true" />
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+<style>
+  footer {
+    margin-top: 4rem;
+    border-top: 1px solid var(--rp-highlight-med);
+  }
+
+  .footer-inner {
+    max-width: var(--body-width);
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem; /* the 2rem boxes below supply most of the spacing */
+  }
+
+  /* Same 2rem box as the header's nav items, so icon rows match top and bottom */
+  .footer-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.25rem;
+    color: var(--rp-subtle);
+    transition: color 0.15s;
+  }
+
+  /* Cancel the last box's 6px inset so the icon sits flush with the gutter */
+  .footer-socials li:last-child {
+    margin-right: calc((2rem - 20px) / -2);
+  }
+
+  .footer-socials a :global(svg) {
+    fill: var(--rp-subtle);
+    transition: fill 0.15s;
+  }
+
+  .footer-socials a:hover {
+    color: var(--rp-iris);
+  }
+
+  .footer-socials a:hover :global(svg) {
+    fill: var(--rp-iris);
+  }
+
+  @media (max-width: 320px) {
+    .footer-inner {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .footer-socials li:last-child {
+      margin-right: 0;
+    }
+  }
+</style>
