@@ -98,7 +98,10 @@ html {
 
 body {
   font-family: var(--font-mono);
-  font-size: 1.0625rem; /* 17px — mono reads small at 16 */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
   line-height: 1.6;
   background-color: var(--rp-base);
   color: var(--rp-text);
@@ -108,9 +111,27 @@ body {
 }
 
 main {
+  flex: 1;
+  width: 100%;
   max-width: var(--body-width);
   margin: 0 auto;
-  padding: 1.5rem 1rem;
+  padding: 2rem 1rem;
+}
+
+/* Page headings shared by /, /about, /blog and post pages. */
+h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--rp-foam);
+  margin: 0 0 0.9rem 0;
+}
+
+h2 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--rp-text);
+  margin: 2.25rem 0 1rem 0;
 }
 
 a {
@@ -146,7 +167,7 @@ button:hover {
 /* blog content styling */
 .blog-post-content {
   font-family: var(--font-prose);
-  font-size: 1.05rem;
+  font-size: 1.125rem;
   line-height: 1.75;
 }
 
