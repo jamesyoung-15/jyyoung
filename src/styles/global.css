@@ -17,6 +17,11 @@
   --rp-highlight-high: #524f67;
   --blue: #89b4fa;
   --body-width: 800px;
+
+  /* Fonts — not theme-dependent, so only declared here */
+  --font-mono:
+    ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --font-prose: Charter, "Bitstream Charter", "Iowan Old Style", Georgia, serif;
 }
 
 /* OS-level light preference fallback (no JS) */
@@ -92,11 +97,14 @@ html {
 }
 
 body {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--font-mono);
+  font-size: 1.0625rem; /* 17px — mono reads small at 16 */
+  line-height: 1.6;
   background-color: var(--rp-base);
   color: var(--rp-text);
   margin: 0;
   padding: 0;
+  -webkit-text-size-adjust: 100%;
 }
 
 main {
