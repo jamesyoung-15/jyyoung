@@ -142,3 +142,85 @@ button {
 button:hover {
   background: var(--rp-highlight-med);
 }
+
+/* blog content styling */
+.blog-post-content {
+  font-family: var(--font-prose);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.blog-post-content p {
+  margin: 1rem 0;
+}
+
+.blog-post-content h2,
+.blog-post-content h3,
+.blog-post-content h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.blog-post-content h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.blog-post-content h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.blog-post-content ul,
+.blog-post-content ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.blog-post-content ul {
+  list-style: disc;
+}
+
+.blog-post-content ol {
+  list-style: decimal;
+}
+
+.blog-post-content li {
+  margin: 0.5rem 0;
+  list-style-position: outside;
+}
+
+.blog-post-content a {
+  color: var(--rp-iris);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.blog-post-content blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--rp-highlight-med);
+  color: var(--rp-subtle);
+  font-style: italic;
+}
+
+.blog-post-content code {
+  background-color: var(--rp-overlay);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.blog-post-content pre {
+  background-color: var(--rp-overlay);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.blog-post-content pre code {
+  background: none;
+  padding: 0;
+}
