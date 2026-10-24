@@ -1,0 +1,74 @@
+---
+import FaMoon from "../assets/icons/moon-solid-full.svg";
+import FaSun from "../assets/icons/sun-regular-full.svg";
+---
+
+<button class="theme-toggle" aria-label="Toggle theme">
+  <span class="dark-icon">
+    <FaMoon width={20} height={20} aria-hidden="true" />
+  </span>
+  <span class="light-icon">
+    <FaSun width={20} height={20} aria-hidden="true" />
+  </span>
+</button>
+
+<script>
+  // Which icon shows is pure CSS, driven off the `data-theme` attribute
+  document.querySelectorAll(".theme-toggle").forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      const next =
+        document.documentElement.getAttribute("data-theme") === "dark"
+          ? "light"
+          : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+    });
+  });
+</script>
+
+<style>
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    border-radius: 0.25rem;
+    color: var(--rp-gold);
+  }
+
+  /* Override the global `button:hover` background — nav items are colour-only */
+  .theme-toggle:hover {
+    background: none;
+  }
+
+  .theme-toggle :global(svg) {
+    display: block;
+    fill: var(--rp-gold);
+    transition: fill 0.15s;
+  }
+
+  .theme-toggle:hover :global(svg) {
+    fill: var(--rp-iris);
+  }
+
+  .dark-icon,
+  .light-icon {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Default (and the no-JS case, where no data-theme is ever set): show moon */
+  .light-icon {
+    display: none;
+  }
+
+  :global([data-theme="light"]) .light-icon {
+    display: flex;
+  }
+
+  :global([data-theme="light"]) .dark-icon {
+    display: none;
+  }
+</style>
