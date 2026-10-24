@@ -7,13 +7,17 @@ interface Props {
   pageTitle: string;
   description?: string;
   canonicalURL?: string;
+  ogImage?: string;
 }
 
 const {
   pageTitle = "James Young",
   description = "James' blog",
   canonicalURL = new URL(Astro.url.pathname, Astro.site),
+  ogImage = "/my-logo.png",
 } = Astro.props;
+
+const socialImage = new URL(ogImage, Astro.site);
 ---
 
 <html lang="en">
@@ -30,10 +34,11 @@ const {
     <link rel="icon" type="image/png" href="/my-logo.png" />
 
     <!-- Open Graph -->
+    <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:image" content="/my-logo.png" />
+    <meta property="og:image" content={socialImage} />
 
     <!-- Theme: run inline before paint to prevent flash of wrong theme -->
     <script is:inline>
