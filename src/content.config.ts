@@ -11,7 +11,6 @@ const posts = defineCollection({
     updatedDate: z.string().optional(),
     tags: z.array(z.string()).default(["others"]),
     draft: z.boolean().default(false),
-    slug: z.string().optional(),
   }),
 });
 
