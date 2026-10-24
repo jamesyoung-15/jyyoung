@@ -1,15 +1,147 @@
 ---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+
+const posts = (await getCollection("posts"))
+  .filter((p) => !p.data.draft)
+  .sort(
+    (a, b) =>
+      new Date(b.data.publishDate).getTime() -
+      new Date(a.data.publishDate).getTime(),
+  )
+  .slice(0, 5);
+
+const fmt = (d: string) =>
+  new Date(d).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="/my-logo.png" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>James Young</title>
-  </head>
-  <body>
-    <h1>Astro</h1>
-  </body>
-</html>
+<BaseLayout
+  pageTitle="James Young"
+  description="James' writing about home-lab and assorted tech related content."
+>
+  <h1>Hello! I'm James Young</h1>
+  <p class="body-text">
+    This is where I write about tech-related content, ranging from my homelab
+    and random hobby projects to random things I have learned.
+  </p>
+  <p class="body-text">
+    See <a href="/about">about</a> to learn more about me or use the links below
+    to find/contact me.
+  </p>
+  <SocialLinks />
+
+  <h2>Recent Posts</h2>
+  <ul class="post-list">
+    {posts.map((p) => (
+      <li>
+        <a class="post-title" href={`/blog/${p.id}`}>
+          {p.data.title}
+        </a>
+        <time datetime={new Date(p.data.publishDate).toISOString()}>
+          {fmt(p.data.publishDate)}
+        </time>
+        <p>{p.data.description}</p>
+        <ul class="post-tags">
+          {p.data.tags.map((tag) => (
+            <li class="tag-pill">{tag}</li>
+          ))}
+        </ul>
+      </li>
+    ))}
+  </ul>
+  <a class="all-posts" href="/blog">
+    All posts →
+  </a>
+</BaseLayout>
+
+<style>
+  .body-text {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    margin: 0 0 0.75rem 0;
+    max-width: 65ch;
+  }
+
+  .body-text:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .body-text a {
+    color: var(--blue);
+  }
+
+  .body-text a:hover {
+    color: var(--rp-iris);
+  }
+
+  /* Direct children only — a descendant selector here also hits the
+     nested .post-tags pills, whose uneven margins make the last pill
+     stretch inside the flex row. */
+  .post-list > li {
+    margin-bottom: 1.25rem;
+  }
+
+  .post-list > li:last-child {
+    margin-bottom: 0;
+  }
+
+  .post-title {
+    font-size: 0.875rem;
+    color: var(--blue);
+  }
+
+  .post-title:hover {
+    color: var(--rp-iris);
+  }
+
+  .post-list time {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--rp-subtle);
+    margin-top: 0.2rem;
+  }
+
+  /* Labels, not controls — no cursor or hover, unlike the filter pills on
+     /blog which are real buttons. */
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-top: 0.5rem;
+  }
+
+  .tag-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    border: 1px solid var(--rp-highlight-med);
+    border-radius: 6px;
+    background-color: var(--rp-overlay);
+    color: var(--rp-subtle);
+  }
+
+  .post-list p {
+    font-size: 0.8rem;
+    color: var(--rp-subtle);
+    line-height: 1.6;
+    margin: 0.35rem 0 0 0;
+  }
+
+  .all-posts {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: var(--blue);
+  }
+
+  .all-posts:hover {
+    color: var(--rp-iris);
+  }
+</style>
