@@ -9,8 +9,9 @@ const blog_repo = "https://github.com/jamesyoung-15/jyyoung";
   pageTitle="About - James Young"
   description="About James Young - platform engineer working on automations and infrastructure as code."
 >
-  <h1>About Me</h1>
+  <h1>About</h1>
 
+  <h2>About Me</h2>
   <p class="body-text">
     I'm currently a Platform Engineer working in Boston where I mainly build
     automations for deploying and configuring infrastructure. I grew up and
@@ -21,12 +22,17 @@ const blog_repo = "https://github.com/jamesyoung-15/jyyoung";
     non-enterprise environment), building hobby projects, playing videogames,
     and football (soccer).
   </p>
+  <p class="body-text">You can find/contact me with the links below.</p>
+
+  <SocialLinks />
+
+  <h2>About My Blogs</h2>
   <p class="body-text">
     My blog posts are just random things I find interesting or wanted to write
     about and are mainly for myself.
   </p>
   <p class="body-text">
-    The blog website uses Astro + CSS with Rose Pine theme (
+    The blog website is built with Astro + CSS with Rose Pine theme (
     <a href={blog_repo} target="_blank" rel="noopener noreferrer">
       repo link
     </a>
@@ -35,13 +41,11 @@ const blog_repo = "https://github.com/jamesyoung-15/jyyoung";
   </p>
   <p class="body-text">
     LLM Disclosure: All my blog posts are completely hand-written as I strongly
-    dislike the way LLM writes, although the topic itself may be related to LLMs in some manner.
-    For example, a project/findings may have been assisted by LLM agents along the way. The actual blog post
-    itself will always be hand-written by me.
+    dislike the way LLM writes, although the topic itself may be related to LLMs
+    in some manner. For example, a project/findings may have been assisted by
+    LLM agents along the way. The actual blog post itself will always be
+    hand-written by me.
   </p>
-  <p class="body-text">You can find/contact me with the links below.</p>
-
-  <SocialLinks />
 </BaseLayout>
 
 <style>
