@@ -25,7 +25,7 @@ The video was my first exposure to Linux and after doing a quick bit of research
 
 My first few months with Pop!_OS were pretty nice and generally stable. I was surprised by how much I preferred the experience of [GNOME](https://www.gnome.org/) and Pop!_OS together over macOS. For example, the tiling window manager (WM) [plugin](https://github.com/pop-os/shell) Pop!_OS created for GNOME was awesome to use.
 
-However, after changing motherboards and my GPU, I started seeing intermittent GPU issues where during long gaming sessions my system would randomly crash with a journal log of something like `ring gfx_0.0.0 timeout`.
+However, after a few months I swapped my motherboard to downsize to an ITX case. Afterwards, I started seeing intermittent GPU issues where during long gaming sessions my system would randomly crash with a journal log of something like `ring gfx_0.0.0 timeout`. I ruled out thermal issues as my GPU temps were right below 80°C and also tried undervolting my GPU with [CoreCtrl](https://gitlab.com/corectrl/corectrl) with no luck.
 
 In hindsight, distrohopping was not the right "fix", but at the time I was frustrated and wanted to try something new.
 
