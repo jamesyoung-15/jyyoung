@@ -23,17 +23,19 @@ The video was my first exposure to Linux and after doing a quick bit of research
 
 ## Pop!_OS: My First Distro
 
-My first few months with Pop!_OS were pretty nice and generally stable. I was surprised by how much I preferred the experience of [GNOME](https://www.gnome.org/) and Pop!_OS together over macOS. For example, the tiling window manager (WM) [plugin](https://github.com/pop-os/shell) Pop!_OS created for GNOME was awesome to use.
+My first few months with Pop!_OS were pretty nice and generally stable. I was surprised by how much I preferred the experience of [GNOME](https://www.gnome.org/) and Pop!_OS together over macOS. For example, the tiling window manager (WM) [extension](https://github.com/pop-os/shell) Pop!_OS created for GNOME was awesome to use.
 
-However, after a few months I swapped my motherboard to downsize to an ITX case. Afterwards, I started seeing intermittent GPU issues where during long gaming sessions my system would randomly crash with a journal log of something like `ring gfx_0.0.0 timeout`. I ruled out thermal issues as my GPU temps were right below 80°C and also tried undervolting my GPU with [CoreCtrl](https://gitlab.com/corectrl/corectrl) with no luck.
+![Preview of PopOS Tiling](./popos22-preview.png)
 
-In hindsight, distrohopping was not the right "fix", but at the time I was frustrated and wanted to try something new.
+However, after a few months I swapped my motherboard to downsize to an ITX case and started seeing intermittent GPU issues where during long gaming sessions my system would randomly crash. The journal log would have some error like `ring gfx_0.0.0 timeout`. I ruled out thermal issues as my GPU temps were right below 80°C and also tried undervolting my GPU with [CoreCtrl](https://gitlab.com/corectrl/corectrl) with no luck.
+
+I naively concluded I needed a new distro to fix this problem. In hindsight, I probably should have spent more time trying to find the actual root cause, but at the time I was frustrated and wanted to try something new.
 
 ## Manjaro: Your Website's SSL Cert Expired Again
 
 During 2022, I heard a lot about Arch and was drawn by the popularity but scared off by its reputation of being hard to set up and maintain, so I decided to try [Manjaro](https://manjaro.org/) which was supposed to be the easier and more stable version of Arch.
 
-My initial impression was great, where I found the AUR amazing with the comprehensive package system that felt a lot better than what apt offered.
+My initial impression was great, where I found the [AUR](https://aur.archlinux.org/) amazing with the comprehensive package system that felt a lot better than what apt offered.
 
 However, after a couple months of use, I was a bit worried about relying on a distro run by an organization with [recurring SSL certificate expiration on their official website](https://www.reddit.com/r/linux/s/9urWuhLMWk) and decided to leave.
 
@@ -45,7 +47,7 @@ I decided to try [Debian](https://www.debian.org/), as people were praising abou
 
 _Side note: These days I pretty much exclusively run Debian for all my homelab machines/VMs._
 
-## Arch: I Used It BTW
+## Arch: I Used Arch BTW
 
 Sometime 2023, I decided to finally try [Arch](https://archlinux.org/). It was a great distro for the most part, where [ArchWiki](https://wiki.archlinux.org/title/Main_page) was by far the best Linux distro wiki I've used. It was also pretty easy to transition as I used Manjaro before and brought back my beloved AUR.
 
@@ -56,6 +58,8 @@ The main issue with Arch that annoyed me was occasional update issues, where one
 At around mid-2024, I saw a bunch of Reddit posts about [NixOS](https://nixos.org/). I was drawn by the declarative configuration part of Nix, particularly as I was starting to store my local configs in a git repository. After testing out NixOS on a secondary boot for a while, I found that I really liked the idea and decided to fully commit and switch.
 
 As of writing this, I am still running NixOS on my personal daily-drivers and I am happy with my setup. My full journey using NixOS is in ["My NixOS Journey So Far"](/blog/my-nixos-journey) post.
+
+![NixOS Setup](./nixos-preview.png)
 
 ## Other Distros I Briefly Ran
 
@@ -90,6 +94,6 @@ It was fun to look back on my distrohopping journey but it also made me realize 
 
 I'd say for the most part, the distro choice didn't really impact my day-to-day, hence why most of my experience was fine. Some distros have nicer out-of-the-box experiences but I tend to like to tweak my system afterwards anyways.
 
-The only thing I can see impacting me is the shipped package manager. However, I could also just use the Nix package manager, so that also doesn't impact me as much as before.
+The only main difference I used to feel was the shipped package manager, although this no longer really matters to me with the ability to use Flatpaks and Nix package manager across distros.
 
-In reality the choice of DE, tiling WM, and other software suite I picked had a much larger impact on my actual experience. So if I were to give advice to a newbie who wants to tinker, I would tell them to pick any distro and focus on tweaking the DE and tools.
+In reality the choice of DE, tiling WM, and other software suite I picked had a much larger impact on my actual experience.
