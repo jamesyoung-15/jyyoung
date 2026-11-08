@@ -2,7 +2,7 @@
 title: "My Linux Distrohopping Journey"
 description: "My journey of hopping between Linux distros for 3 years before settling on NixOS."
 publishDate: "November 07, 2026"
-tags: ["linux", "opinion"]
+tags: ["linux", "retrospective"]
 ---
 
 I wanted to use this post to write about my Linux distrohopping experience starting from my first experience with Linux in early-2021 to mid-2024 when I settled on NixOS.
