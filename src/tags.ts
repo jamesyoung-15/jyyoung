@@ -17,6 +17,7 @@ export const TAGS = {
   writeup: "Investigation, benchmark, findings",
   opinion: "Stance, reflection, or just random thoughts",
   list: "Curated collection",
+  retrospective: "Looking back on an experience or journey",
 
   // dump anything not above here
   misc: "Uncategorised",
