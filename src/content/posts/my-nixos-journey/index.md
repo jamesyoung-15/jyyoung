@@ -73,7 +73,7 @@ Most of the shared configs between devices are static and set once, such as enab
 
 The main config that was shared with constant edits and changes was the system packages. For example, if I added `vlc` to my desktop, I'd also want it on my laptop, so I would need to add it to `laptop/configuration.nix`.
 
-To keep my laptop and desktop configuration packages in sync, I created a Python script that would parse text between the blocks `# START list of packages` and  `# END list of packages` and output the contents to a `packages.txt` file.
+To keep my laptop and desktop configuration packages in sync, I created a Python script that would parse text between the blocks `# START list of packages` and `# END list of packages` and output the contents to a `packages.txt` file.
 
 I would then copy the content and paste it in between the two blocks to ensure both package list contents match. The script looks something like this:
 

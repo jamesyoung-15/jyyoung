@@ -84,7 +84,7 @@ I think I didn't use it long as I personally preferred [KDE](https://kde.org/pla
 
 ## What About the DE and Tiling WM?
 
-From 2021 to 2022, I used GNOME as it was shipped with Pop!_OS so I was most familiar with it. When I switched to Arch, I moved to KDE as I dislike the lack of customization of GNOME and hated how every update seemed to break all the extensions and plugins i had.
+From 2021 to 2022, I used GNOME as it was shipped with Pop!_OS so I was most familiar with it. When I switched to Arch, I moved to KDE as I dislike the lack of customization of GNOME and hated how every update seemed to break all the extensions and plugins I had.
 
 After seeing a bunch of cool tiling WM, I decided to try [AwesomeWM](https://awesomewm.org/) with my Arch setup. During this time I realized I didn't have the energy to fully customize and maintain the AwesomeWM configs like all the cool posts I saw had so I went back to KDE which I still use with [Krohnkite](https://krohnkite.com/) for tiling.
 
